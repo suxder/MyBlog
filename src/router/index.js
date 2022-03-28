@@ -1,14 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Layout from '../views/backstage/Layout/index.vue'
+import Login from '../views/backstage/Login/index.vue'
+const dashboard = resolve => require(['../views/backstage/Dashboard/index.vue'], resolve)
 
 Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/login',
+    name: '登陆',
+    component: Login
+  },
+  {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: '首页',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [{
+      path: 'dashboard',
+      component: dashboard
+    }]
   },
   {
     path: '/about',
