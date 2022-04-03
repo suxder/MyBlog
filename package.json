@@ -32,6 +32,7 @@
     "prettier": "^2.6.1",
     "prettier-eslint": "^13.0.0",
     "vue-cli-plugin-axios": "0.0.4",
+    "vue-cli-plugin-mock": "^1.0.3",
     "vue-template-compiler": "^2.6.11"
   },
   "prettier": {
