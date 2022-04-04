@@ -39,45 +39,31 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
 export default {
-  data () {
+  data() {
     return {
       loginForm: {
-        username: '',
-        password: ''
+        username: "",
+        password: "",
       },
-      userToken: ''
+      userToken: "",
     };
   },
-  mounted () {
-    this.jumpLabel()
+  mounted() {
+    this.jumpLabel();
   },
   methods: {
-    ...mapMutations(['changeLogin']),
     login() {
-      let _this = this
-      if (this.loginForm.username === '' || this.loginForm.password ==='') {
-        alert('账号密码不能为空');
-      } else {
-        this.axios({
-          method: 'post',
-          url: '/api/login/account',
-          data: _this.loginForm
-        }).then(res => {
-          _this.userToken = 'Bearer' + res.data.data.body.token
-          // 将token保存到vuex中
-          _this.changeLogin({Authorization: _this.userToken})
-          _this.$router.push('/dashboard')
-          alert('登陆成功')
-        }).catch(error => {
-          alert('账号或密码错误')
-          console.log(error)
+      this.$store
+        .dispatch("user/login", this.loginForm)
+        .then(() => {
+          this.$router.push("/dashboard");
         })
-      }
+        .catch((err) => {
+          alert("登陆失败：" + err);
+        });
     },
     jumpLabel() {
-      console.log("开始执行函数")
       const labels = document.querySelectorAll(".form-control label");
 
       labels.forEach((label) => {

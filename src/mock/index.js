@@ -25,7 +25,7 @@ export default {
     },
     'POST /api/login/account': (req, res) => {
         const { password, username } = req.body;
-        if (password === '888888' && username === 'admin') {
+        if (password === '123123' && username === '1439433131@qq.com') {
             return res.json({
                 status: 'ok',
                 token: 'sdfsdfsdfdsf',
@@ -34,6 +34,7 @@ export default {
             return res.json({
                 status: 'error',
                 code: 403,
+                msg: '密码错误'
             });
         }
     },
