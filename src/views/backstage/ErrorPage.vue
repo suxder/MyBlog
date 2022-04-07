@@ -12,15 +12,15 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+<style scoped>
 .not-found {
   position: relative;
   height: 100%;
-  h1 {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
+}
+h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 </style>
