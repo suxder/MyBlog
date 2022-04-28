@@ -1,5 +1,5 @@
 module.exports = {
   pluginOptions: {
-    mock: { entry: './src/mock/index.js', debug: true },
+    mock: { entry: './src/mock/index.js', debug: true, disable: true },
   },
 };

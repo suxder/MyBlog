@@ -1,15 +1,38 @@
 <template>
   <div class="navPage-container">
-    <section class="bg" />
+    <div class="video-wrap">
+      <video
+        autoplay
+        muted
+        loop
+      >
+        <source src="../../../assets/video/video1-bg.mp4">
+      </video>
+    </div>
+    <div class="navBox">
+      <div id="header">
+        <h1>刘家豪的个人网站</h1>
+        <p>Liu Jiahao's Personal Website</p>
+      </div>
+      <div id="content">
+        <p><a href="#">网络日志</a></p>
+        <p><a href="#"> 文集：白色荒原 </a></p>
+        <p><a href="#">文集：大海深蓝</a></p>
+      </div>
+      <div id="footer">
+        <p>
+          <a href="#">Contact</a>
+          | liujiahao.com
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Index",
-  mounted() {
-    this.blurringLoading()
-  },
+  mounted() {},
   methods: {
     blurringLoading() {
       const bg = document.querySelector(".bg");
@@ -32,6 +55,13 @@ export default {
 </script>
 
 <style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
 .navPage-container {
   font-family: Georgia, serif;
   /* 设置body为flex容器，所有子标签成为flex项目 */
@@ -44,15 +74,102 @@ export default {
   overflow: hidden;
   margin: 0;
 }
-.bg {
-  background: url("https://w.wallhaven.cc/full/96/wallhaven-9636x8.jpg")
-    no-repeat top center/cover;
+.video-wrap video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: -100;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+}
+.navBox {
   position: absolute;
-  top: -30px;
-  left: -30px;
-  width: calc(100vw + 60px);
-  height: calc(100vh + 60px);
-  z-index: -1;
-  filter: blur(30px);
+  height: 40vh;
+  width: 40vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fefefe;
+  padding: 10px;
+}
+
+.navBox a {
+  color: #fefefe;
+}
+
+#header h1,
+#header p {
+  text-align: center;
+}
+
+#header h1 {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+#header {
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.navBox div {
+  width: 100%;
+}
+
+#header p {
+  line-height: 2.2;
+}
+
+#content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px 10px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+#content p {
+  margin-top: 16px;
+  line-height: 1.8;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.5em;
+  padding: 0.25em;
+}
+
+#content p::before {
+  content: "» ";
+  text-align: center;
+}
+
+#content p:hover {
+  background-color: #fefefe;
+  color: #111111;
+  text-shadow: 0 1px 1px #333;
+}
+
+#content p:hover a {
+  color: #111111;
+  text-decoration: underline;
+}
+
+#footer p {
+  line-height: 3;
+  float: right;
+  padding-right: 10px;
+}
+
+#footer p a:hover {
+  background-color: #fefefe;
+  padding: 4px 2px;
+  border-radius: 0.5em;
+  color: #111;
+  text-decoration: underline;
+  text-shadow: 0 1px 1px #333;
 }
 </style>

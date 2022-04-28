@@ -14,17 +14,19 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo;
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password })
+      login({ email: username.trim(), pwd: password })
         .then((response) => {
           const { data } = response;
+          const res = data.data;
           // 若密码正确，则resolve
-          if (data.status === "ok") {
-            commit("SET_TOKEN", data.token);
-            setToken(data.token);
+          console.log(res)
+          if (res.success === 1) {
+            commit("SET_TOKEN", res.token);
+            setToken(res.token);
             resolve();
           } else {
             // 密码错误
-            reject(data.msg);
+            reject(res.msg);
           }
         })
         .catch((error) => {
